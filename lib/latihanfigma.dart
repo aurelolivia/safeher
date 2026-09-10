@@ -86,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
 
                     TextField(
                       decoration: InputDecoration(
-                        hintText: 'roberto@dimo.com',
+                        hintText: 'aurelolivia@gmail                                                 .com',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(24),
                         ),
@@ -149,7 +149,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(248, 255, 115, 0),
+                          backgroundColor: const Color(0xffF8623A),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(24),
                           ),
@@ -233,8 +233,9 @@ class _LoginPageState extends State<LoginPage> {
                     ),
 
                     const SizedBox(height: 24),
-
-                    const Center(
+   
+                    const Align(
+                      alignment: Alignment.centerLeft,
                       child: Text.rich(
                         TextSpan(
                           text: "Don't have an account? ",
