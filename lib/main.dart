@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:safeher/latihanfigma.dart';
+import 'tugas7.dart';
 
-void main () {
+void main() {
   runApp(const MyApp());
 }
 
@@ -10,9 +10,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const LoginPage(),
+      home: Tugas7(),
     );
   }
 }
