@@ -4,6 +4,7 @@ import 'package:safeher/latihan_Localstore/login.dart';
 import 'package:safeher/latihan_bottom_navigator.dart';
 import 'package:safeher/service/shared_preference.dart';
 import 'package:safeher/latihan_Localstore/validasi.dart';
+import 'package:safeher/tugas10.dart';
 import 'package:safeher/tugas9.dart';
 
 void main() async {
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
           seedColor: Colors.deepPurple,
         ),
       ),
-      home: HomePage (),
+      home: FormPage (),
     );
   }
 }
