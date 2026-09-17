@@ -1,30 +1,33 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SharedPreferenceService {
-  static const String _keyIsLoggedIn = "is_logged_in";
-  static const String _keyDarkMode = "is_dark_mode";
+// Helper class untuk mengelola penyimpanan data lokal (Session/Preferences) menggunakan package SharedPreferences.
+class PreferenceHandler {
+  // Variable static untuk menyimpan instance dari SharedPreferences.
+  // late menandakan variable akan diinisialisasi sebelum digunakan (pada fungsi init).
+  static late SharedPreferences _prefs;
 
-  // Simpan status Login
-  Future<void> setLoginStatus(bool status) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool(_keyIsLoggedIn, status);
+  // Inisialisasi SharedPreferences.
+  // Wajib dipanggil sekali di awal aplikasi (misalnya di main.dart) sebelum membaca/menulis data.
+  static Future<void> init() async {
+    _prefs = await SharedPreferences.getInstance();
   }
 
-  // Ambil status Login
-  Future<bool> getLoginStatus() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getBool(_keyIsLoggedIn) ?? false;
+  // Key unik yang digunakan untuk menyimpan status login di lokal storage.
+  static const _keyIsLogin = "isLogin";
+
+  // Membantu menyimpan status login pengguna (true/false) ke dalam SharedPreferences.
+  static Future<void> setLogin(bool isLogin) async {
+    await _prefs.setBool(_keyIsLogin, isLogin);
   }
 
-  // Simpan status Dark Mode
-  Future<void> setDarkMode(bool isDark) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool(_keyDarkMode, isDark);
+  // Getter static untuk mengecek apakah pengguna sudah login atau belum.
+  // Mengembalikan value boolean dari key 'isLogin', jika null (belum pernah disimpan) maka default-nya false.
+  static bool get isLogin {
+    return _prefs.getBool(_keyIsLogin) ?? false;
   }
 
-  // Ambil status Dark Mode
-  Future<bool> getDarkMode() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getBool(_keyDarkMode) ?? false;
+  // Fungsi untuk logout. Menghapus key status login dari SharedPreferences.
+  static Future<void> logOut() async {
+    await _prefs.remove(_keyIsLogin);
   }
 }

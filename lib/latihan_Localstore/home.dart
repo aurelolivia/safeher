@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:safeher/service/shared_preference.dart';
 import 'package:safeher/latihanfigma.dart';
 
 

@@ -165,7 +165,7 @@ class _Tugas7State extends State<Tugas7> {
                   border: OutlineInputBorder(),
                   labelText: 'Kategori',
                 ),
-                value: kategori,
+                initialValue: kategori,
                 items: const [
                   DropdownMenuItem(
                     value: 'Elektronik',

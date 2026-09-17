@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:safeher/latihan_Localstore/home.dart';
 import 'package:safeher/latihan_Localstore/register.dart';
 import 'package:safeher/model/user_model.dart';
-import 'package:safeher/service/shared_preference.dart';
 import 'package:safeher/service/sqflite_service.dart';
 
 class Login extends StatefulWidget {

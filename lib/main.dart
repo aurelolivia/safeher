@@ -1,32 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:safeher/latihan_Localstore/home.dart';
-import 'package:safeher/latihan_Localstore/login.dart';
-import 'package:safeher/latihan_bottom_navigator.dart';
 import 'package:safeher/service/shared_preference.dart';
-import 'package:safeher/latihan_Localstore/validasi.dart';
-import 'package:safeher/tugas10.dart';
-import 'package:safeher/tugas9.dart';
+import 'package:safeher/splash_screen.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  bool statusLogin =
-      await SharedPreferenceService().getLoginStatus();
-
-  runApp(
-    MyApp(
-      isLoggedIn: statusLogin,
-    ),
-  );
+  await PreferenceHandler.init();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final bool isLoggedIn;
-
-  const MyApp({
-    super.key,
-    required this.isLoggedIn,
-  });
+  const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -34,11 +18,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: .fromSeed(
-          seedColor: Colors.deepPurple,
-        ),
+        
+        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: FormPage (),
+      home: SplashScreen(),
     );
   }
 }
