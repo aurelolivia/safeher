@@ -1,56 +1,30 @@
-import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:safeher/latihanfigma.dart';
+class SharedPreferenceService {
+  static const String _keyIsLoggedIn = "is_logged_in";
+  static const String _keyDarkMode = "is_dark_mode";
 
+  // Simpan status Login
+  Future<void> setLoginStatus(bool status) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_keyIsLoggedIn, status);
+  }
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+  // Ambil status Login
+  Future<bool> getLoginStatus() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool(_keyIsLoggedIn) ?? false;
+  }
 
-  @override
- @override
-State<Home> createState() => _HomeState();
-}
+  // Simpan status Dark Mode
+  Future<void> setDarkMode(bool isDark) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_keyDarkMode, isDark);
+  }
 
-class _HomeState extends State<Home> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home : Belajar local Storage'),
-        backgroundColor: Colors.amber,
-      ),
-      body: Column(
-        children: [
-          Text("Nama Saya : "),
-          Text("Alamat Email : "),
-          Text("Hobi Saya : "),
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () async {
-                  await SharedPreferenceService().setLoginStatus(false);
-
-                  if (!context.mounted) return;
-
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const LoginPage(),
-                    ),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black,
-                  foregroundColor: Colors.white,
-                ),
-                child: Text('Logout'),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
+  // Ambil status Dark Mode
+  Future<bool> getDarkMode() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool(_keyDarkMode) ?? false;
   }
 }
